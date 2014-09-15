@@ -1,0 +1,124 @@
+[  168.741156] i2c i2c-0: master_xfer[0] W, addr=0x34, len=1
+[  168.745509] i2c i2c-0: master_xfer[1] R, addr=0x34, len=1
+[  169.647188] [CSI]Welcome to CSI driver
+[  169.648772] [CSI]csi_init
+[  169.653905] [CSI_DEBUG]csi_probe
+[  169.657393] [CSI_DEBUG]dev->ccm_cfg[0] = bf0c4de0
+[  169.661070] [CSI_DEBUG]dev->ccm_cfg[0]->ccm = ov5642
+[  169.664554] [CSI_DEBUG]dev->ccm_cfg[0]->twi_id = 1
+[  169.674460] [CSI_DEBUG]dev->ccm_cfg[0]->i2c_addr = 78
+[  169.683403] [CSI_DEBUG]dev->ccm_cfg[0]->interface = 0
+[  169.687193] [CSI_DEBUG]dev->ccm_cfg[0]->vflip = 0
+[  169.690591] [CSI_DEBUG]dev->ccm_cfg[0]->hflip = 0
+[  169.694247] [CSI_DEBUG]dev->ccm_cfg[0]->iovdd_str = 
+[  169.698037] [CSI_DEBUG]dev->ccm_cfg[0]->avdd_str = 
+[  169.701608] [CSI_DEBUG]dev->ccm_cfg[0]->dvdd_str = 
+[  169.705598] [CSI_DEBUG]dev->ccm_cfg[0]->flash_pol = 1
+[  169.720245] i2c-core: driver [ov5642] registered
+[  169.722916] i2c 1-003c: uevent
+[  169.725691] i2c 1-003c: uevent
+[  169.728061] i2c 1-003c: uevent
+[  169.731260] ov5642 1-003c: probe
+[  169.739134] ov5642 1-003c: uevent
+[  169.744796] i2c i2c-1: client [ov5642] registered with bus id 1-003c
+[  169.749561] [CSI]registered sub device,input_num = 0
+[  169.753681] [CSI_DEBUG][OV5642]CSI_SUBDEV_CMD_GET_INFO
+[  169.758005] [CSI_DEBUG][OV5642]ccm_info.mclk=16e3600
+[  169.758011]  
+[  169.761501] [CSI_DEBUG][OV5642]ccm_info.vref=0
+[  169.761505]  
+[  169.765224] [CSI_DEBUG][OV5642]ccm_info.href=1
+[  169.765228]  
+[  169.768805] [CSI_DEBUG][OV5642]ccm_info.clock=1
+[  169.768809]  
+[  169.772382] [CSI_DEBUG][OV5642]ccm_info.iocfg=0
+[  169.772386]  
+[  169.776731] [CSI_DEBUG][OV5642]CSI_SUBDEV_CMD_SET_INFO
+[  169.780736] [CSI_DEBUG][OV5642]ccm_info.mclk=16e3600
+[  169.780740]  
+[  169.784220] [CSI_DEBUG][OV5642]ccm_info.vref=0
+[  169.784224]  
+[  169.787943] [CSI_DEBUG][OV5642]ccm_info.href=1
+[  169.787948]  
+[  169.791515] [CSI_DEBUG][OV5642]ccm_info.clock=1
+[  169.791519]  
+[  169.795282] [CSI_DEBUG][OV5642]ccm_info.iocfg=0
+[  169.795287]  
+[  169.798769] [CSI]power on and power off camera!
+[  169.802864] [CSI_DEBUG][OV5642]CSI_SUBDEV_CMD_SET_INFO
+[  169.807081] [CSI_DEBUG][OV5642]ccm_info.mclk=16e3600
+[  169.807086]  
+[  169.810567] [CSI_DEBUG][OV5642]ccm_info.vref=0
+[  169.810571]  
+[  169.814051] [CSI_DEBUG][OV5642]ccm_info.href=1
+[  169.814055]  
+[  169.817836] [CSI_DEBUG][OV5642]ccm_info.clock=1
+[  169.817841]  
+[  169.821420] [CSI_DEBUG][OV5642]ccm_info.iocfg=0
+[  169.821425]  
+[  169.825181] [CSI_DEBUG][OV5642]CSI_SUBDEV_PWR_ON
+[  170.124966] [CSI_DEBUG][OV5642]CSI_SUBDEV_PWR_OFF
+[  170.145063] [CSI_DEBUG]dev->ccm_cfg[0]->sd = ee8789c0
+[  170.149329] [CSI_DEBUG]dev->ccm_cfg[0]->ccm_info = bf0c4e7c
+[  170.153517] [CSI_DEBUG]dev->ccm_cfg[0]->ccm_info.iocfg = 0
+[  170.157854] [CSI_DEBUG]dev->ccm_cfg[0]->ccm_info.vref = 0
+[  170.161946] [CSI_DEBUG]dev->ccm_cfg[0]->ccm_info.href = 1
+[  170.166305] [CSI_DEBUG]dev->ccm_cfg[0]->ccm_info.clock = 1
+[  170.171015] [CSI_DEBUG]dev->ccm_cfg[0]->ccm_info.mclk = 24000000
+[  170.175029] [CSI_DEBUG]dev->ccm_cfg[0]->iovdd =   (null)
+[  170.179139] [CSI_DEBUG]dev->ccm_cfg[0]->avdd =   (null)
+[  170.183057] [CSI_DEBUG]dev->ccm_cfg[0]->dvdd =   (null)
+[  170.187336] [CSI_DEBUG][OV5642]CSI_SUBDEV_CMD_SET_INFO
+[  170.191341] [CSI_DEBUG][OV5642]ccm_info.mclk=16e3600
+[  170.191346]  
+[  170.194993] [CSI_DEBUG][OV5642]ccm_info.vref=0
+[  170.194997]  
+[  170.198479] [CSI_DEBUG][OV5642]ccm_info.href=1
+[  170.198483]  
+[  170.202056] [CSI_DEBUG][OV5642]ccm_info.clock=1
+[  170.202061]  
+[  170.210694] [CSI_DEBUG][OV5642]ccm_info.iocfg=0
+[  170.210698]  
+[  170.217200] [CSI]V4L2 device registered as video1
+[  170.225595] [CSI_DEBUG]csi_open
+[  170.229729] [CSI_DEBUG][OV5642]CSI_SUBDEV_CMD_SET_INFO
+[  170.233751] [CSI_DEBUG][OV5642]ccm_info.mclk=16e3600
+[  170.233755]  
+[  170.237737] [CSI_DEBUG][OV5642]ccm_info.vref=0
+[  170.237742]  
+[  170.241223] [CSI_DEBUG][OV5642]ccm_info.href=1
+[  170.241227]  
+[  170.244796] [CSI_DEBUG][OV5642]ccm_info.clock=1
+[  170.244800]  
+[  170.248674] [CSI_DEBUG][OV5642]ccm_info.iocfg=0
+[  170.248679]  
+[  170.252276] [CSI_DEBUG][OV5642]CSI_SUBDEV_PWR_ON
+[  170.554956] [CSI_DEBUG][OV5642]CSI_SUBDEV_STBY_ON
+[  170.683827] [CSI][OV5642]disable oe!
+[  170.688200] i2c i2c-1: master_xfer[0] W, addr=0x3c, len=3
+[  170.690535] incomplete xfer (0x20)
+[  170.694104] [CSI_ERR][OV5642]sensor_write error!
+[  170.697788] [CSI_ERR][OV5642]sensor_write_err!
+[  170.701272] [CSI_ERR][OV5642]disable oe falied!
+[  171.035058] [CSI_DEBUG][OV5642]CSI_SUBDEV_STBY_OFF
+[  171.204347] [CSI_DEBUG][OV5642]sensor_init
+[  171.208718] i2c i2c-1: master_xfer[0] W, addr=0x3c, len=2
+[  171.211061] incomplete xfer (0x20)
+[  171.215330] [CSI_ERR][OV5642]Error -70 on register write
+[  171.220360] [CSI_ERR][OV5642]sensor_read err at sensor_detect!
+[  171.225154] [CSI_ERR][OV5642]chip found is not an target chip.
+[  171.229513] [CSI_ERR]sensor initial error when csi open!
+[  178.765612] i2c i2c-0: master_xfer[0] W, addr=0x34, len=1
+[  178.769976] i2c i2c-0: master_xfer[1] R, addr=0x34, len=8
+[  178.774776] i2c i2c-0: master_xfer[0] W, addr=0x34, len=1
+[  178.785605] i2c i2c-0: master_xfer[1] R, addr=0x34, len=1
+[  178.794336] i2c i2c-0: master_xfer[0] W, addr=0x34, len=1
+[  178.798905] i2c i2c-0: master_xfer[1] R, addr=0x34, len=8
+[  178.803710] i2c i2c-0: master_xfer[0] W, addr=0x34, len=1
+[  178.808262] i2c i2c-0: master_xfer[1] R, addr=0x34, len=1
+[  178.812860] i2c i2c-0: master_xfer[0] W, addr=0x34, len=1
+[  178.817386] i2c i2c-0: master_xfer[1] R, addr=0x34, len=2
+[  178.822019] i2c i2c-0: master_xfer[0] W, addr=0x34, len=1
+[  178.826540] i2c i2c-0: master_xfer[1] R, addr=0x34, len=2
+[  178.831164] i2c i2c-0: master_xfer[0] W, addr=0x34, len=1
+[  178.835523] i2c i2c-0: master_xfer[1] R, addr=0x34, len=2
