@@ -554,7 +554,7 @@ csi_d6 = port:PG10<3><default><default><default>
 csi_d7 = port:PG11<3><default><default><default>
 csi_reset = port:PH14<1><default><default><0>
 csi_power_en = port:PE4<1><default><default><0>
-csi_stby = port:PH17<1><default><default><0>
+csi_stby = ""
 csi_flash = ""
 csi_af_en = ""
 
