@@ -1,0 +1,25 @@
+DVK512       DVK Sig     Cubie          A20      Baseboard   Signal Name
+Pin #
+1            CSI1-2V8    U15-pin3                H2-pin3     I never knew this pin was brought out! It is connected to the AXP209 LDO4
+2            GND
+3            I2C_SCL1    U15-pin6       PB18     H2-pin6     TWI1-SCK
+4            I2C_SDA1    U15-pin7       PB19     H2-pin7     TWI1-SDA
+5            CAM_VSYNC   U15-pin8       PG3      H2-pin8     CSI1-VSYNC
+6            CAM_HREF    U15-pin9       PG2      H2-pin9     CSI1-HSYNC
+7            CAM_PCLK    U15-pin5       PG0      H2-pin5     CSI1-PCLK
+8            CAM_CLK     U15-pin1       PG1      H2-pin10    CSI1-MCLK
+9            CSI1_D7     U15-pin1       PG11     H2-pin18    CSI1-D7
+10           CSI1_D6     U15-pin1       PG10     H2-pin17    CSI1-D6
+11           CSI1_D5     U15-pin1       PG09     H2-pin16    CSI1-D5
+12           CSI1_D4     U15-pin1       PG08     H2-pin15    CSI1-D4
+13           CSI1_D3     U15-pin1       PG07     H2-pin14    CSI1-D3
+14           CSI1_D2     U15-pin1       PG06     H2-pin13    CSI1-D2
+15           CSI1_D1     U15-pin1       PG05     H2-pin12    CSI1-D1
+16           CSI1_D0     U15-pin1       PG04     H2-pin11    CSI1-D0
+
+The link to the DVK521 schematic is at http://dl.cubieboard.org/parteners/waveshare/Schematic/DVK521.pdf
+ Other signals in the FEX file:
+
+csi_reset = port:PH14<1><default><default><0>     #BB H2-pin4  CSI1-RST
+csi_power_en = port:PE4<1><default><default><0>   #BB H2-pin2  CSI1-PWR
+csi_stby = port:PH17<1><default><default><0>      #BB H2
