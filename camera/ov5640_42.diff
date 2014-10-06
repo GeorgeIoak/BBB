@@ -1,0 +1,368 @@
+2c2
+<  * drivers/media/video/sun4i_csi/device/ov5640.c
+---
+>  * drivers/media/video/sun4i_csi/device/ov5642.c
+24c24
+<  * A V4L2 driver for OV ov5640 cameras.
+---
+>  * A V4L2 driver for OV ov5642 cameras.
+38c38
+< #include <plat/sys_config.h>
+---
+> #include <plat/sys_config.h>  
+40a41,42
+> #include "../../../../power/axp_power/axp-gpio.h"
+> #if defined CONFIG_ARCH_SUN4I
+42a45,48
+> #elif defined CONFIG_ARCH_SUN5I
+> #include "../include/sun5i_csi_core.h"
+> #include "../include/sun5i_dev_csi.h"
+> #endif
+45c51
+< MODULE_DESCRIPTION("A low-level driver for OV ov5640 sensors");
+---
+> MODULE_DESCRIPTION("A low-level driver for OV ov5642 sensors");
+48,50d53
+< //GI Kernel Device Debug
+< #define DEBUG 1
+< 
+52c55
+< #define DEV_DBG_EN   		0
+---
+> #define DEV_DBG_EN   		1
+54c57
+< #define csi_dev_dbg(x,arg...) printk(KERN_INFO"[CSI_DEBUG][OV5640]"x,##arg)
+---
+> #define csi_dev_dbg(x,arg...) printk(KERN_INFO"[CSI_DEBUG][OV5642]"x,##arg)
+58,59c61,62
+< #define csi_dev_err(x,arg...) printk(KERN_INFO"[CSI_ERR][OV5640]"x,##arg)
+< #define csi_dev_print(x,arg...) printk(KERN_INFO"[CSI][OV5640]"x,##arg)
+---
+> #define csi_dev_err(x,arg...) printk(KERN_INFO"[CSI_ERR][OV5642]"x,##arg)
+> #define csi_dev_print(x,arg...) printk(KERN_INFO"[CSI][OV5642]"x,##arg)
+65,66c68,69
+< #define IO_CFG		1						//0 for csi0 GI
+< #define V4L2_IDENT_SENSOR 0x5640
+---
+> #define IO_CFG		1		//0 for csi0 //GI
+> #define V4L2_IDENT_SENSOR 0x5642
+69,77c72,80
+< #define CSI_STBY_ON			1
+< #define CSI_STBY_OFF 		0
+< #define CSI_RST_ON			0
+< #define CSI_RST_OFF			1
+< #define CSI_PWR_ON			1
+< #define CSI_PWR_OFF			0
+< 
+< #define REG_TERM 0xff
+< #define VAL_TERM 0xff
+---
+> #define CSI_STBY_ON	1
+> #define CSI_STBY_OFF 	0
+> #define CSI_RST_ON	0
+> #define CSI_RST_OFF	1
+> #define CSI_PWR_ON	1
+> #define CSI_PWR_OFF	0
+> 
+> #define REG_TERM 	0xff
+> #define VAL_TERM 	0xff
+80,82c83,85
+< #define REG_ADDR_STEP 2
+< #define REG_DATA_STEP 1
+< #define REG_STEP 			(REG_ADDR_STEP+REG_DATA_STEP)
+---
+> #define REG_ADDR_STEP 	2
+> #define REG_DATA_STEP 	1
+> #define REG_STEP 	(REG_ADDR_STEP+REG_DATA_STEP)
+89c92
+< #define QSXGA_HEIGHT	1936
+---
+> #define QSXGA_HEIGHT		1936
+92,93c95,96
+< #define P1080P_WIDTH	1920
+< #define P1080P_HEIGHT	1080
+---
+> #define P1080P_WIDTH		1920
+> #define P1080P_HEIGHT		1080
+101,102c104,105
+< #define HD720_WIDTH 	1280
+< #define HD720_HEIGHT	720
+---
+> #define HD720_WIDTH 		1280
+> #define HD720_HEIGHT		720
+107,108c110,111
+< #define SVGA_HEIGHT 	600
+< #define VGA_WIDTH			640
+---
+> #define SVGA_HEIGHT 		600
+> #define VGA_WIDTH		640
+112c115
+< #define CIF_WIDTH			352
+---
+> #define CIF_WIDTH		352
+123c126
+<  * The ov5640 sits on i2c with ID 0x78
+---
+>  * The ov5642 sits on i2c with ID 0x78
+128,129c131
+< #define REG_CLKRC	0x11	/* Clock control */
+< #define CLK_SCALE	0x3f	/* Mask for internal clock scale */
+---
+> 
+149,150c151,152
+< 	int	width;
+< 	int	height;
+---
+> 	int width;
+> 	int height;
+152c154
+< 	int	contrast;
+---
+> 	int contrast;
+199,200c201,202
+< 	{{0x3c,0x00},{0x04}},
+< 	{{0x3c,0x01},{0xb4}},
+---
+> {{0x3c,0x00},{0x04}},
+> {{0x3c,0x01},{0xb4}},
+1617c1619
+< 
+---
+> /*
+1622c1624
+< 
+---
+> */
+2011c2013,2014
+< 	ret = i2c_transfer(client->adapter, &msg, 1);
+---
+> 	//GI ret = i2c_transfer(client->adapter, &msg, 1);
+> 	ret = i2c_master_send(client, data, 2); //GI
+2024c2027,2028
+< 	ret = i2c_transfer(client->adapter, &msg, 1);
+---
+> 	//GI ret = i2c_transfer(client->adapter, &msg, 1);
+> 	ret = i2c_master_recv(client, value, 1); //GI
+2056,2058c2060,2068
+< 	ret = i2c_transfer(client->adapter, &msg, 1);
+< 	if (ret > 0) {
+< 		ret = 0;
+---
+> 	//GI ret = i2c_transfer(client->adapter, &msg, 1);
+> 	ret = i2c_master_send(client, data, 3); //GI
+> 	//GI if (ret > 0) {
+> 	//	ret = 0;
+> 	//} 
+> 	if (ret < 3) {
+> 		// GI csi_dev_err("sensor_write error!\n");
+> 		dev_err(&client->dev, "%s: i2c write error, reg: %s\n", __func__, reg);
+> 		return ret < 0 ? ret : -EIO;
+2060,2063c2070,2071
+< 	else if (ret < 0) {
+< 		csi_dev_err("sensor_write error!\n");
+< 	}
+< 	return ret;
+---
+> 	// GI return ret;
+> 	return 0;
+2081c2089
+< 			msleep(vals->value[0] * 256 + vals->value[1]);
+---
+> 			mdelay(vals->value[0]);
+2090a2099
+> 		udelay(500);
+2096a2106,2130
+> /*
+>  * CSI GPIO control
+>  
+> static void csi_gpio_write(struct v4l2_subdev *sd, user_gpio_set_t *gpio, int status)
+> {
+> 	struct csi_dev *dev=(struct csi_dev *)dev_get_drvdata(sd->v4l2_dev->dev);
+> 		
+>   if(gpio->port == 0xffff) {
+>     axp_gpio_set_io(gpio->port_num, 1);
+>     axp_gpio_set_value(gpio->port_num, status); 
+>   } else {
+>     gpio_write_one_pin_value(dev->csi_pin_hd,status,(char *)&gpio->gpio_name);
+>   }
+> } 
+> 
+> static void csi_gpio_set_status(struct v4l2_subdev *sd, user_gpio_set_t *gpio, int status)
+> {
+> 	struct csi_dev *dev=(struct csi_dev *)dev_get_drvdata(sd->v4l2_dev->dev);
+> 		
+>   if(gpio->port == 0xffff) {
+>     axp_gpio_set_io(gpio->port_num, status);
+>   } else {
+>     gpio_set_one_pin_io_status(dev->csi_pin_hd,status,(char *)&gpio->gpio_name);
+>   }
+> } */
+2107d2140
+< 	int ret;
+2114,2118c2147,2153
+< 	  strcpy(csi_stby_str,"csi_stby_b");
+< 	  strcpy(csi_power_str,"csi_power_en_b");
+< 	  strcpy(csi_reset_str,"csi_reset_b");
+< 	}
+< 
+---
+> 	  	strcpy(csi_stby_str,"csi_stby_b");
+> 	  	strcpy(csi_power_str,"csi_power_en_b");
+> 	  	strcpy(csi_reset_str,"csi_reset_b");
+> 	}
+>    
+> //insure that clk_disable() and clk_enable() are called in pair 
+> //when calling CSI_SUBDEV_STBY_ON/OFF and CSI_SUBDEV_PWR_ON/OFF
+2123,2133d2157
+< 			//reset off io
+< 			gpio_write_one_pin_value(dev->csi_pin_hd,CSI_RST_OFF,csi_reset_str);
+< 			msleep(10);
+< 			//active mclk before stadby in
+< 			clk_enable(dev->csi_module_clk);
+< 			msleep(100);
+< 			//disable io oe
+< 			csi_dev_print("disalbe oe!\n");
+< 			ret = sensor_write_array(sd, sensor_oe_disable_regs , ARRAY_SIZE(sensor_oe_disable_regs));
+< 			if(ret < 0)
+< 				csi_dev_err("disalbe oe falied!\n");
+2135,2140c2159,2160
+< 			gpio_write_one_pin_value(dev->csi_pin_hd,CSI_STBY_ON,csi_stby_str);
+< 			msleep(100);
+< 			gpio_write_one_pin_value(dev->csi_pin_hd,CSI_STBY_OFF,csi_stby_str);
+< 			msleep(100);
+< 			gpio_write_one_pin_value(dev->csi_pin_hd,CSI_STBY_ON,csi_stby_str);
+< 			msleep(100);
+---
+> 			gpio_write_one_pin_value(dev->csi_pin_hd,CSI_STBY_ON,csi_reset_str);
+> 			mdelay(10);
+2142,2145c2162
+< 			clk_disable(dev->csi_module_clk);
+< 
+< //			gpio_write_one_pin_value(dev->csi_pin_hd,CSI_RST_ON,csi_reset_str);
+< //			msleep(10);
+---
+> 			clk_enable(dev->csi_module_clk);
+2151c2168,2171
+< 			msleep(10);
+---
+> 			mdelay(30);
+> 			//standby off io
+> 			gpio_write_one_pin_value(dev->csi_pin_hd,CSI_STBY_OFF,csi_stby_str);
+> 			mdelay(10);
+2154,2159c2174
+< 			msleep(10);
+< 			gpio_write_one_pin_value(dev->csi_pin_hd,CSI_RST_ON,csi_reset_str);
+< 			msleep(100);
+< 			gpio_write_one_pin_value(dev->csi_pin_hd,CSI_RST_OFF,csi_reset_str);
+< 			gpio_write_one_pin_value(dev->csi_pin_hd,CSI_STBY_OFF,csi_stby_str);
+< 			msleep(10);
+---
+> 			mdelay(30);
+2173d2187
+< 			msleep(10);
+2176d2189
+< 				msleep(10);
+2180d2192
+< 				msleep(10);
+2184d2195
+< 				msleep(10);
+2185a2197
+> 			mdelay(10);
+2187a2200,2202
+> 			//standby off io
+> 			gpio_write_one_pin_value(dev->csi_pin_hd,CSI_STBY_OFF,csi_stby_str);
+> 			mdelay(10);
+2278a2294,2296
+> 	csi_dev_dbg("regs.reg_num[0] is %d \n", regs.reg_num[0]);
+> 	csi_dev_dbg("regs.reg_num[1] is %d \n", regs.reg_num[1]);
+> 	csi_dev_dbg("regs.value[0] is %d \n", regs.value[0]);
+2296a2315,2316
+> 	csi_dev_dbg("sensor_detect-ret\n");
+> 	csi_dev_dbg("Return is %d on sensor detect\n", ret);
+2530c2550
+< 	//struct v4l2_pix_format *pix = &fmt->fmt.pix;//linux-3.0
+---
+> //	struct v4l2_pix_format *pix = &fmt->fmt.pix;//linux-3.0
+2824,2838c2844,2847
+< 	struct v4l2_captureparm *cp = &parms->parm.capture;
+< 	struct v4l2_fract *tpf = &cp->timeperframe;
+< 	struct sensor_info *info = to_state(sd);
+< 	int div;
+< 	
+< 	struct regval_list regs;
+< 
+< 	regs.reg_num[0] = 0x30;
+< 	regs.reg_num[1] = 0x11;
+< 
+< 	
+< 	if (parms->type != V4L2_BUF_TYPE_VIDEO_CAPTURE)
+< 		return -EINVAL;
+< 	if (cp->extendedmode != 0)
+< 		return -EINVAL;
+---
+> //	struct v4l2_captureparm *cp = &parms->parm.capture;
+> //	struct v4l2_fract *tpf = &cp->timeperframe;
+> //	struct sensor_info *info = to_state(sd);
+> //	int div;
+2840,2852c2849,2877
+< 	if (tpf->numerator == 0 || tpf->denominator == 0)
+< 		div = 1;  /* Reset to full rate */
+< 	else
+< 		div = (tpf->numerator*SENSOR_FRAME_RATE)/tpf->denominator;
+< 	if (div == 0)
+< 		div = 1;
+< 	else if (div > CLK_SCALE)
+< 		div = CLK_SCALE;
+< 	info->clkrc = (info->clkrc & 0x80) | div;
+< 	regs.value[0] = info->clkrc;
+< 	tpf->numerator = 1;
+< 	tpf->denominator = SENSOR_FRAME_RATE/div;
+< 	return sensor_write(sd, regs.reg_num, regs.value);
+---
+> //	if (parms->type != V4L2_BUF_TYPE_VIDEO_CAPTURE)
+> //		return -EINVAL;
+> //	if (cp->extendedmode != 0)
+> //		return -EINVAL;
+> 
+> //	if (tpf->numerator == 0 || tpf->denominator == 0)
+> //		div = 1;  /* Reset to full rate */
+> //	else {
+> //		if (info->width > SVGA_WIDTH && info->height > SVGA_HEIGHT) {
+> //			div = (tpf->numerator*SENSOR_FRAME_RATE/2)/tpf->denominator;
+> //		}
+> //		else {
+> //			div = (tpf->numerator*SENSOR_FRAME_RATE)/tpf->denominator;
+> //		}
+> //	}
+> //
+> //	if (div == 0)
+> //		div = 1;
+> //	else if (div > 8)
+> //		div = 8;
+> //
+> //	switch()
+> //
+> //	info->clkrc = (info->clkrc & 0x80) | div;
+> //	tpf->numerator = 1;
+> //	tpf->denominator = sensor_FRAME_RATE/div;
+> //
+> //	sensor_write(sd, REG_CLKRC, info->clkrc);
+> 	return 0;
+2955c2980
+< 	msleep(100);
+---
+> 	mdelay(10);
+3016c3041
+< 	msleep(100);
+---
+> 	mdelay(10);
+3574d3598
+< 
+3732c3756
+< 	{ "ov5640", 0 },
+---
+> 	{ "ov5642", 0 },
+3741c3765
+< 	.name = "ov5640",
+---
+> 	.name = "ov5642",

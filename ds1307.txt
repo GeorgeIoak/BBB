@@ -1,0 +1,4 @@
+sudo i2cset -y 1 0x68 0x07 0x10 #Enable SWOUT & set 1kHz
+sudo i2cset -y 1 0x68 0x07 0x11 #Enable SWOUT & set 4.096kHz
+sudo i2cset -y 1 0x68 0x07 0x12 #Enable SWOUT & set 8.192kHz
+sudo i2cset -y 1 0x68 0x07 0x13 #Enable SWOUT & set 32.768kHz
