@@ -23,3 +23,6 @@ The link to the DVK521 schematic is at http://dl.cubieboard.org/parteners/wavesh
 csi_reset = port:PH14<1><default><default><0>     #BB H2-pin4  CSI1-RST
 csi_power_en = port:PE4<1><default><default><0>   #BB H2-pin2  CSI1-PWR
 csi_stby = port:PH17<1><default><default><0>      #BB H2
+
+PWDN on all OmniVision cameras has an internal pull-dwon enabled. Normal operation is with PWDN low.
+RESET does not have any internal pull downs or pull ups. This needs to be pulled high for normal operation.
