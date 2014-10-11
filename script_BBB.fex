@@ -120,7 +120,7 @@ twi0_sda = port:PB01<2><default><default><default>
 
 [twi1_para]
 twi1_used = 1
-twi1_scl = port:PB18<2><default><default><default>
+twi1_scl = port:PB18<2><1><default><1>
 twi1_sda = port:PB19<2><default><default><default>
 
 [twi2_para]
@@ -149,7 +149,7 @@ uart_dcd = port:PA16<4><1><default><default>
 uart_ring = port:PA17<4><1><default><default>
 
 [uart_para2]
-uart_used = 1
+uart_used = 0
 uart_port = 2
 uart_type = 4
 uart_tx = port:PI18<3><1><default><default>
@@ -177,8 +177,8 @@ uart_rx = port:PH05<4><1><default><default>
 uart_used = 1
 uart_port = 5
 uart_type = 2
-uart_tx = port:PI10<4><1><default><default>
-uart_rx = port:PI11<4><1><default><default>
+uart_tx = port:PI10<3><1><default><default>
+uart_rx = port:PI11<3><1><default><default>
 
 [uart_para6]
 uart_used = 0
@@ -312,7 +312,7 @@ screen0_output_type = 1
 screen0_output_mode = 4
 screen1_output_type = 3
 screen1_output_mode = 5
-fb0_width = 1024
+fb0_width = 1366
 fb0_height = 768
 fb0_framebuffer_num = 2
 fb0_format = 10
@@ -377,7 +377,7 @@ lcd_gamma_tbl_0 = 0x0
 lcd_gamma_tbl_1 = 0x10101
 lcd_gamma_tbl_255 = 0xffffff
 lcd_bl_en_used = 1
-lcd_bl_en = port:PH07<1><0><default><1>
+lcd_bl_en = port:PH07<1><0><1><1>
 lcd_power_used = 1
 lcd_power = port:PH08<1><0><default><1>
 lcd_pwm_used = 1
@@ -493,7 +493,7 @@ dac2_src = 6
 dac3_src = 0
 
 [csi0_para]
-csi_used = 1
+csi_used = 0
 csi_mode = 0
 csi_dev_qty = 1
 csi_stby_mode = 0
@@ -549,13 +549,13 @@ csi_flash_b =
 csi_af_en_b =
 
 [csi1_para]
-csi_used = 0
+csi_used = 1
 csi_mode = 0
 csi_dev_qty = 1
 csi_stby_mode = 1
-csi_mname = ""
+csi_mname = "ov5642"
 csi_twi_id = 1
-csi_twi_addr = 0xba
+csi_twi_addr = 0x78
 csi_if = 0
 csi_vflip = 0
 csi_hflip = 0
@@ -564,8 +564,8 @@ csi_avdd = ""
 csi_dvdd = ""
 csi_flash_pol = 1
 csi_mname_b = ""
-csi_twi_id_b = 1
-csi_twi_addr_b = 0x78
+csi_twi_id_b =
+csi_twi_addr_b =
 csi_if_b = 0
 csi_vflip_b = 1
 csi_hflip_b = 0
@@ -602,9 +602,9 @@ csi_d20 =
 csi_d21 =
 csi_d22 =
 csi_d23 =
-csi_reset = port:PH14<1><default><default><0>
-csi_power_en =
-csi_stby = port:PH17<1><default><default><0>
+csi_reset =
+csi_power_en = port:PH15<1><default><default><0>
+csi_stby =
 csi_flash =
 csi_af_en =
 csi_reset_b =
